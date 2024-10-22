@@ -3,11 +3,6 @@ on: push
 
 jobs:
   push:
-    name: Docker
-on: push
-
-jobs:
-  push:
     name: 🐳 Build and publish backend Docker image
     runs-on: ubuntu-latest
     permissions:
@@ -37,7 +32,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ env.IMAGE_NAME }}
+          images: ghcr.io/${{ github.repository }}:dev
 
       - name: 🚢 Build and Push Docker Image
         id: push
